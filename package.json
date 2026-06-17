@@ -1,0 +1,19 @@
+{
+  "name": "softlocker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SoftLocker — AI-powered document categorization and management",
+  "scripts": {
+    "dev": "pnpm --filter ./apps/* --parallel run dev",
+    "dev:web": "pnpm --filter web run dev",
+    "dev:api": "uv run --project apps/api uvicorn src.main:app --reload --port 8000",
+    "build": "pnpm --filter ./apps/* --parallel run build",
+    "lint": "pnpm --filter ./apps/* --parallel run lint"
+  },
+  "keywords": ["document-management", "ocr", "monorepo", "softlocker"],
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
