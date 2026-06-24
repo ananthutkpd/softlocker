@@ -13,6 +13,14 @@ def extract_text_from_image(file_path: str) -> str:
     """Extract text from an image file using Tesseract OCR."""
     try:
         import pytesseract
+        import platform
+        import os
+
+        # Helper for Windows users who install Tesseract to the default path
+        if platform.system() == "Windows":
+            default_tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+            if os.path.exists(default_tesseract_cmd) and not pytesseract.pytesseract.tesseract_cmd.endswith("tesseract.exe"):
+                pytesseract.pytesseract.tesseract_cmd = default_tesseract_cmd
 
         image = Image.open(file_path)
         text = pytesseract.image_to_string(image)
@@ -37,6 +45,14 @@ def extract_text_from_pdf(file_path: str) -> str:
             if not text:
                 try:
                     import pytesseract
+                    import platform
+                    import os
+
+                    if platform.system() == "Windows":
+                        default_tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+                        if os.path.exists(default_tesseract_cmd) and not pytesseract.pytesseract.tesseract_cmd.endswith("tesseract.exe"):
+                            pytesseract.pytesseract.tesseract_cmd = default_tesseract_cmd
+
                     from PIL import Image
                     pix = page.get_pixmap(dpi=300)
                     img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
