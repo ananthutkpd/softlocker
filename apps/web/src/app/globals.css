@@ -939,6 +939,9 @@ img {
   box-shadow: var(--shadow-lg);
   width: 90%;
   max-width: 520px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -948,6 +951,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 24px 28px 0;
+  flex-shrink: 0;
 }
 
 .modal-title {
@@ -976,6 +980,7 @@ img {
 
 .modal-body {
   padding: 24px 28px;
+  overflow-y: auto;
 }
 
 .modal-footer {
@@ -984,6 +989,7 @@ img {
   justify-content: flex-end;
   gap: 12px;
   padding: 16px 28px 24px;
+  flex-shrink: 0;
 }
 
 /* Dropzone */
